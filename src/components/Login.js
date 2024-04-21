@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_LOGO } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -44,8 +45,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVNlDI9eMyQLPD8we3gY67iIgybkCCIeuZlCh74XREkA&s",
+            photoURL: USER_LOGO,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -80,7 +80,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
           navigate("/browse");
 
           // ...
